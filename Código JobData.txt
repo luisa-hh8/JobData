@@ -1,0 +1,379 @@
+CREATE TABLE [dbo].[T_G_tiposEstudio](
+	[idTipoEstudio] [tinyint] IDENTITY(1,1) NOT NULL,
+	[tipoEstudio] [varchar](100) NOT NULL,
+	[estado] [char](1) NULL,
+ CONSTRAINT [PK_T_G_tiposEstudio] PRIMARY KEY CLUSTERED 
+(
+	[idTipoEstudio] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[T_G_tiposIdentificacion]    Script Date: 05/08/2019 13:20:46 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[T_G_tiposIdentificacion](
+	[idTipoIdentificacion] [char](2) NOT NULL,
+	[tipoIdentificacion] [varchar](50) NOT NULL,
+	[idTipoDocSICME] [int] NULL,
+ CONSTRAINT [PK_T_G_tipoIdentificacion] PRIMARY KEY CLUSTERED 
+(
+	[idTipoIdentificacion] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[T_HV_academicos]    Script Date: 05/08/2019 13:20:46 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[T_HV_academicos](
+	[idAcademico] [int] IDENTITY(1,1) NOT NULL,
+	[nit] [varchar](16) NULL,
+	[idTipoEstudio] [tinyint] NULL,
+	[tituloObtenido] [varchar](250) NULL,
+	[nomInstitucion] [varchar](150) NULL,
+	[anoIngreso] [char](4) NULL,
+	[anoRetiro] [char](4) NULL,
+	[actualmente] [char](1) NULL,
+ CONSTRAINT [PK_sgh_hv_estudios] PRIMARY KEY CLUSTERED 
+(
+	[idAcademico] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 75) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[T_HV_familiares]    Script Date: 05/08/2019 13:20:46 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[T_HV_familiares](
+	[idFamiliar] [int] IDENTITY(1,1) NOT NULL,
+	[nit] [varchar](16) NULL,
+	[nitFamiliar] [varchar](16) NULL,
+	[nombres] [varchar](150) NULL,
+	[idOcupacion] [tinyint] NULL,
+	[telefono] [char](10) NULL,
+	[idParentesco] [tinyint] NULL,
+	[anoNacimiento] [char](4) NULL,
+	[mismaCasa] [char](1) NULL,
+ CONSTRAINT [PK_sgh_hv_familiares] PRIMARY KEY CLUSTERED 
+(
+	[idFamiliar] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 75) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[T_HV_nivelesAcademicos]    Script Date: 05/08/2019 13:20:46 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[T_HV_nivelesAcademicos](
+	[Codigo] [tinyint] NOT NULL,
+	[Descripcion] [varchar](150) NULL,
+ CONSTRAINT [PK_Y_Tipos_Escolaridad] PRIMARY KEY CLUSTERED 
+(
+	[Codigo] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[T_HV_personal]    Script Date: 05/08/2019 13:20:46 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[T_HV_personal](
+	[nit] [varchar](16) NOT NULL,
+	[nombres] [varchar](60) NOT NULL,
+	[direccion] [varchar](60) NULL,
+	[telefono_1] [varchar](15) NULL,
+	[tipo_identificacion] [char](1) NULL,
+	[mail] [varchar](35) NULL,
+	[pos_num] [tinyint] NOT NULL,
+	[fecha_creacion] [datetime] NULL,
+	[celular] [varchar](15) NULL,
+	[y_dpto] [varchar](5) NULL,
+	[y_ciudad] [varchar](5) NULL,
+	[barrio] [varchar](20) NULL,
+	[y_pais] [varchar](5) NULL,
+	[estado_civil] [nvarchar](1) NULL,
+	[estrato] [char](1) NULL,
+	[nFechaNacimiento] [smalldatetime] NULL,
+	[nIdPaisNac] [varchar](5) NULL,
+	[nIdDepartamentoNac] [varchar](5) NULL,
+	[nIdCiudadNac] [varchar](5) NULL,
+	[nPwd] [char](4) NULL,
+	[nSexo] [char](1) NULL,
+	[nRH] [char](3) NULL,
+	[nIdNivelEscolaridad] [tinyint] NULL,
+	[nFechaUltUpdate] [smalldatetime] NULL,
+ CONSTRAINT [PK_T_HV_personal] PRIMARY KEY CLUSTERED 
+(
+	[nit] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[T_HV_refLaborales]    Script Date: 05/08/2019 13:20:46 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[T_HV_refLaborales](
+	[idRefLaboral] [int] IDENTITY(1,1) NOT NULL,
+	[nit] [varchar](16) NULL,
+	[empresa] [varchar](150) NULL,
+	[idDepartamento] [varchar](5) NULL,
+	[idCiudad] [varchar](5) NULL,
+	[cargo] [varchar](150) NULL,
+	[funciones] [varchar](5000) NULL,
+	[telefono] [varchar](20) NULL,
+	[nomJefeInmediato] [varchar](150) NULL,
+	[anoIngreso] [char](4) NULL,
+	[anoRetiro] [char](4) NULL,
+	[actualmente] [char](1) NULL,
+	[causaRetiro] [varchar](250) NULL,
+	[salario] [varchar](10) NULL,
+	[sinExperiencia] [char](1) NULL,
+	[idOcupacionCIUO] [char](10) NULL,
+ CONSTRAINT [PK_hv_exp_laboral] PRIMARY KEY CLUSTERED 
+(
+	[idRefLaboral] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 75) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[T_HV_refPersonales]    Script Date: 05/08/2019 13:20:46 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING OFF
+GO
+CREATE TABLE [dbo].[T_HV_refPersonales](
+	[idRefPersonal] [int] IDENTITY(1,1) NOT NULL,
+	[nit] [varchar](16) NULL,
+	[nombres] [varchar](100) NULL,
+	[idOcupacion] [tinyint] NULL,
+	[telefono] [char](10) NULL,
+	[celular] [char](10) NULL,
+	[esFamiliar] [char](1) NULL,
+ CONSTRAINT [PK_sgh_hv_personales] PRIMARY KEY CLUSTERED 
+(
+	[idRefPersonal] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 75) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[T_HV_terceros]    Script Date: 05/08/2019 13:20:46 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[T_HV_terceros](
+	[nit] [varchar](16) NOT NULL,
+	[digito] [tinyint] NULL,
+	[nombres] [varchar](60) NOT NULL,
+	[direccion] [varchar](60) NULL,
+	[ciudad] [varchar](20) NULL,
+	[telefono_1] [varchar](15) NULL,
+	[telefono_2] [varchar](15) NULL,
+	[fax] [varchar](15) NULL,
+	[apartado_aereo] [varchar](10) NULL,
+	[tipo_identificacion] [char](1) NULL,
+	[pais] [varchar](20) NULL,
+	[gran_contribuyente] [bit] NOT NULL,
+	[autoretenedor] [bit] NOT NULL,
+	[bloqueo] [tinyint] NULL,
+	[notas] [varchar](250) NULL,
+	[lista] [tinyint] NULL,
+	[concepto_1] [varchar](5) NULL,
+	[concepto_2] [varchar](5) NULL,
+	[concepto_3] [varchar](5) NULL,
+	[concepto_4] [varchar](5) NULL,
+	[concepto_5] [varchar](5) NULL,
+	[concepto_6] [varchar](5) NULL,
+	[concepto_7] [varchar](5) NULL,
+	[concepto_8] [varchar](5) NULL,
+	[concepto_9] [varchar](5) NULL,
+	[concepto_10] [varchar](5) NULL,
+	[mail] [varchar](35) NULL,
+	[pos_num] [tinyint] NOT NULL,
+	[regimen] [char](1) NULL,
+	[cupo_credito] [money] NULL,
+	[nit_real] [decimal](18, 0) NOT NULL,
+	[condicion] [varchar](4) NULL,
+	[vendedor] [decimal](18, 0) NULL,
+	[fletes] [real] NULL,
+	[es_excento_iva] [varchar](1) NULL,
+	[contacto_1] [varchar](50) NULL,
+	[contacto_2] [varchar](50) NULL,
+	[formato_factura] [varchar](10) NULL,
+	[fecha_creacion] [datetime] NULL,
+	[formato_copias] [tinyint] NULL,
+	[tipo_factura] [varchar](4) NULL,
+	[dias_gracia] [smallint] NULL,
+	[solo_contado] [varchar](1) NULL,
+	[descuento_fijo] [real] NULL,
+	[excluir_tabla_desc] [char](1) NULL,
+	[centro_fijo] [int] NULL,
+	[exportado] [char](1) NULL,
+	[factor_o_lista] [char](1) NULL,
+	[codigo_ica] [smallint] NULL,
+	[celular] [varchar](15) NULL,
+	[y_dpto] [varchar](5) NULL,
+	[y_ciudad] [varchar](5) NULL,
+	[estampilla] [real] NULL,
+	[timbre] [real] NULL,
+	[impdeporte] [real] NULL,
+	[impica] [real] NULL,
+	[impconsumo] [real] NULL,
+	[fecha_cambio_razon] [smalldatetime] NULL,
+	[razon_comercial] [varchar](60) NULL,
+	[barrio] [varchar](20) NULL,
+	[ean] [varchar](20) NULL,
+	[y_pais] [varchar](5) NULL,
+	[ext_1] [varchar](5) NULL,
+	[codigo_alterno] [varchar](20) NULL,
+	[tipo_devolucion] [varchar](4) NULL,
+	[Usuario] [varchar](20) NULL,
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[otro_descuento] [real] NULL,
+	[no_regulados] [char](1) NULL,
+	[tipo_direccion] [smallint] NULL,
+	[y_barrios] [int] NULL,
+	[Motivo_Estado] [nvarchar](200) NULL,
+	[banco_personas] [smallint] NULL,
+	[id_definicion_tributaria_tipo] [int] NULL,
+	[actividad_cree] [varchar](4) NULL,
+	[estado_civil] [nvarchar](1) NULL,
+	[estrato] [char](1) NULL,
+	[paginaweb] [varchar](80) NULL,
+	[area_labora] [varchar](50) NULL,
+	[cargo] [varchar](50) NULL,
+	[ext2] [varchar](20) NULL,
+	[celular2] [varchar](20) NULL,
+	[email2] [varchar](50) NULL,
+	[descuento_financiero] [real] NULL,
+	[es_excento_cree_ventas] [char](1) NULL,
+	[GLN_Cabasnet] [varchar](30) NULL,
+	[Runt] [varchar](40) NULL,
+	[Fecha_Runt] [smalldatetime] NULL,
+	[sincronizado] [char](1) NULL,
+	[nFechaNacimiento] [smalldatetime] NULL,
+	[nIdPaisNac] [varchar](5) NULL,
+	[nIdDepartamentoNac] [varchar](5) NULL,
+	[nIdCiudadNac] [varchar](5) NULL,
+	[nPwd] [char](4) NULL,
+	[nSexo] [char](1) NULL,
+	[nRH] [char](3) NULL,
+	[nIdNivelEscolaridad] [tinyint] NULL,
+	[nFechaUltUpdate] [smalldatetime] NULL CONSTRAINT [DF_T_HV_terceros_nFechaUltUpdate]  DEFAULT (getdate()),
+	[esLaboratorio] [char](1) NULL,
+	[idPerfil] [int] NULL,
+ CONSTRAINT [PK_T_HV_terceros] PRIMARY KEY CLUSTERED 
+(
+	[nit] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+ALTER TABLE [dbo].[T_HV_academicos]  WITH CHECK ADD  CONSTRAINT [FK_T_HV_academicos_T_G_tiposEstudio] FOREIGN KEY([idTipoEstudio])
+REFERENCES [dbo].[T_G_tiposEstudio] ([idTipoEstudio])
+GO
+ALTER TABLE [dbo].[T_HV_academicos] CHECK CONSTRAINT [FK_T_HV_academicos_T_G_tiposEstudio]
+GO
+ALTER TABLE [dbo].[T_HV_academicos]  WITH CHECK ADD  CONSTRAINT [FK_T_HV_academicos_T_HV_personal] FOREIGN KEY([nit])
+REFERENCES [dbo].[T_HV_personal] ([nit])
+GO
+ALTER TABLE [dbo].[T_HV_academicos] CHECK CONSTRAINT [FK_T_HV_academicos_T_HV_personal]
+GO
+ALTER TABLE [dbo].[T_HV_academicos]  WITH CHECK ADD  CONSTRAINT [FK_T_HV_academicos_T_HV_terceros] FOREIGN KEY([nit])
+REFERENCES [dbo].[T_HV_terceros] ([nit])
+GO
+ALTER TABLE [dbo].[T_HV_academicos] CHECK CONSTRAINT [FK_T_HV_academicos_T_HV_terceros]
+GO
+ALTER TABLE [dbo].[T_HV_familiares]  WITH CHECK ADD  CONSTRAINT [FK_T_HV_familiares_T_G_ocupaciones] FOREIGN KEY([idOcupacion])
+REFERENCES [dbo].[T_G_ocupaciones] ([idOcupacion])
+GO
+ALTER TABLE [dbo].[T_HV_familiares] CHECK CONSTRAINT [FK_T_HV_familiares_T_G_ocupaciones]
+GO
+ALTER TABLE [dbo].[T_HV_familiares]  WITH CHECK ADD  CONSTRAINT [FK_T_HV_familiares_T_G_parentescos] FOREIGN KEY([idParentesco])
+REFERENCES [dbo].[T_G_parentescos] ([idParentesco])
+GO
+ALTER TABLE [dbo].[T_HV_familiares] CHECK CONSTRAINT [FK_T_HV_familiares_T_G_parentescos]
+GO
+ALTER TABLE [dbo].[T_HV_familiares]  WITH CHECK ADD  CONSTRAINT [FK_T_HV_familiares_T_HV_personal] FOREIGN KEY([nit])
+REFERENCES [dbo].[T_HV_personal] ([nit])
+GO
+ALTER TABLE [dbo].[T_HV_familiares] CHECK CONSTRAINT [FK_T_HV_familiares_T_HV_personal]
+GO
+ALTER TABLE [dbo].[T_HV_familiares]  WITH CHECK ADD  CONSTRAINT [FK_T_HV_familiares_T_HV_terceros] FOREIGN KEY([nit])
+REFERENCES [dbo].[T_HV_terceros] ([nit])
+GO
+ALTER TABLE [dbo].[T_HV_familiares] CHECK CONSTRAINT [FK_T_HV_familiares_T_HV_terceros]
+GO
+ALTER TABLE [dbo].[T_HV_refLaborales]  WITH CHECK ADD  CONSTRAINT [FK_T_HV_refLaborales_T_HV_personal] FOREIGN KEY([nit])
+REFERENCES [dbo].[T_HV_personal] ([nit])
+GO
+ALTER TABLE [dbo].[T_HV_refLaborales] CHECK CONSTRAINT [FK_T_HV_refLaborales_T_HV_personal]
+GO
+ALTER TABLE [dbo].[T_HV_refLaborales]  WITH CHECK ADD  CONSTRAINT [FK_T_HV_refLaborales_T_HV_terceros] FOREIGN KEY([nit])
+REFERENCES [dbo].[T_HV_terceros] ([nit])
+GO
+ALTER TABLE [dbo].[T_HV_refLaborales] CHECK CONSTRAINT [FK_T_HV_refLaborales_T_HV_terceros]
+GO
+ALTER TABLE [dbo].[T_HV_refPersonales]  WITH CHECK ADD  CONSTRAINT [FK_T_HV_refPersonales_T_G_ocupaciones] FOREIGN KEY([idOcupacion])
+REFERENCES [dbo].[T_G_ocupaciones] ([idOcupacion])
+GO
+ALTER TABLE [dbo].[T_HV_refPersonales] CHECK CONSTRAINT [FK_T_HV_refPersonales_T_G_ocupaciones]
+GO
+ALTER TABLE [dbo].[T_HV_refPersonales]  WITH CHECK ADD  CONSTRAINT [FK_T_HV_refPersonales_T_HV_personal] FOREIGN KEY([nit])
+REFERENCES [dbo].[T_HV_personal] ([nit])
+GO
+ALTER TABLE [dbo].[T_HV_refPersonales] CHECK CONSTRAINT [FK_T_HV_refPersonales_T_HV_personal]
+GO
+ALTER TABLE [dbo].[T_HV_refPersonales]  WITH CHECK ADD  CONSTRAINT [FK_T_HV_refPersonales_T_HV_terceros] FOREIGN KEY([nit])
+REFERENCES [dbo].[T_HV_terceros] ([nit])
+GO
+ALTER TABLE [dbo].[T_HV_refPersonales] CHECK CONSTRAINT [FK_T_HV_refPersonales_T_HV_terceros]
+GO
+
